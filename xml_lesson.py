@@ -35,7 +35,7 @@ print(dates_2013[0], dates_2013[-1], sep='\n')
 names = set()
 for child in root:
 	tag = child.find('user')
-	if text.starswith('2013'):
+	if text.startswith('2013'):
 		tag = child.find('user')
 		if tag.get('id') == 'admin':
 			names.add(child.find('user/lname').text)
@@ -66,5 +66,9 @@ for child in root:
 
 		if toip in netw:
 			print('toip: ', topip)
-
+# info@pyhawaii
+# mynewlist = [item * 3 for item in l if item == 2]
+# names = [name.strip() for name in fin.readlines()]
+# names = [name.strip() for name in fin]
+# duck typing 'quacks like a list' inheritance for parent and child
 
