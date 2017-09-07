@@ -122,11 +122,97 @@ print(more_uniques)
 
 
 # ========== Itertools
+https://github.com/chalmerlowe/stuff/blob/master/itertools.ipynb
 
 fin = open('itertolls.ipynb)
 
 for line in it.islice(fin, None, None, 3):
 	print(line.strip()) # could use lstrip/rstrip as well
+
+
+
+
+
+# =========== Puzzles
+https://github.com/pyhawaii/talks/blob/master/puzzles/boston_pug/hex_words.md
+
+# open the file
+fin = open('words') # check with print(fin.read())
+
+
+# create a group of values for hex letters
+hex_letters = set('abcdef')
+>> {'a', 'b', 'c', 'd', 'e', 'f'}
+
+
+# create a variable to hold the max score
+# create a variable to hold the word
+max_score = 0
+max_word = ''
+
+
+# iterate over the dictionary....
+for line in fin:
+	line = line.rstrip().lower() # or the other option would be to add 'ABCDEF' upper to the hex_letters set
+	if hex_letters.issuperset(line):
+		score = int(line, 16)
+		if score > max_score:
+			max_score = score
+			max_word = line
+			print(max_score, max_word)
+
+
+
+
+# confirm whether the word is nothing but hex letters
+# ============== begin test
+h = 'hello'
+hset = set(h)
+hset
+>> {'e', 'h', 'l', 'o'}
+
+hex_letters
+hset.issubset(hex_letters)
+>> False
+
+b = 'beef'
+bset = set(b)
+bset
+>> {'b', 'e', 'f'}
+
+bset.issubset(hex_letters)
+True
+
+hex_letters.issuperset('beef') # note that the input is a string and didnt need to convert to 'set'
+>> True
+
+hex_letters.issuperset('hello')
+>> False
+# ============== end test
+
+
+
+
+# if nothing but hex letters...
+# do the math
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
