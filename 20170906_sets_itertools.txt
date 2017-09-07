@@ -1,0 +1,137 @@
+# PyHawaii September 6, 2017
+
+# ====== Sets
+
+Introduction to Python
+sets
+
+Objectives
+In this session, we should expect to:
+Understand sets as defined in Python
+Explore the methods associated with sets
+Use some of the set methods to manipulate data
+`set()`
+All elements in a `set()` are unique
+Elements are un-ordered
+Can perform set comparisons very easily (union, intersection, etc)
+
+# Two main ways to make a set
+
+s = set([1, 2, 3])
+
+# OR
+
+s2 = {4, 5, 6}        # set literal
+print(s)
+print(s2)
+{1, 2, 3}
+{4, 5, 6}
+
+Curly braces...
+mean dict, right?
+Dict: {'key':'value', 'key2':123}
+Set: {'value', 'value2', 4321}
+Dicts have key:value pairs while set has individual values
+
+print(s)
+s.add(5)   # add a single item to the set: s
+print(s)
+{1, 2, 3}
+{1, 2, 3, 5}
+In [3]:
+print(s2)
+s2.update([1, 9, 4])   # adding all of these items to our second set: s2
+print(s2)
+
+# NOTICE:
+# even though we are updating with an additional 4, Python only includes one of them.
+{4, 5, 6}
+{1, 4, 5, 6, 9}
+.add()
+.update()
+Why not .append() AND .extend(), like in lists?
+Lists have order, so append (i.e. to the end) makes sense
+Sets don't have order, so append is less meaningful than add
+Mnemonic: appendices are at the end of books.
+
+print(s, s2)
+print()
+print(s.difference(s2))  # IN s but NOT IN s2
+print(s2.difference(s))  # IN s2 but NOT IN s
+{1, 2, 3, 5} {1, 4, 5, 6, 9}
+{2, 3}
+{9, 4, 6}
+
+print(s, s2)
+print()
+print(s.intersection(s2))  # ONLY items found in both s and s2
+{1, 2, 3, 5} {1, 4, 5, 6, 9}
+{1, 5}
+
+print(s, s2)
+print()
+print(s.union(s2))   # ALL items in the combination of both s and s2
+{1, 2, 3, 5} {1, 4, 5, 6, 9}
+{1, 2, 3, 4, 5, 6, 9}
+
+print(s, s2)
+print()
+print(s.symmetric_difference(s2))  # the combined set of unique items from both sets
+                                   # i.e. everything that is NOT found in both s and s2
+{1, 2, 3, 5} {1, 4, 5, 6, 9}
+{2, 3, 4, 6, 9}
+
+i = {0}  # single item set
+
+print(i.isdisjoint(s))   # checking if two sets, i and s, have overlapping items: they don't
+print(s.isdisjoint(s2))  # s intersects with s2 so it returns False
+True
+False
+
+v = {1, 2, 3}   # create a new set that contains only items that were in our first set
+print(s, v)
+v.issubset(s)   # checks to see if v is a subset (i.e. contains only items found in another set)
+                # similarly set.issuperset works the other way
+{1, 2, 3, 5} {1, 2, 3}
+True
+
+f = frozenset([1, 2, 3])   # frozensets are like sets except they are immutable
+f
+frozenset({1, 2, 3})
+
+Deduplicating on the fly
+uniques = set([1, 2, 3, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3])
+print(uniques)
+{1, 2, 3}
+
+lots_of_dupes = [1, 2, 3, 4, 5] * 1000
+print(lots_of_dupes)
+[1, 2, 3, 4, 5, 1, 2, ...]
+
+
+more_uniques = set()
+
+for number in lots_of_dupes:
+    if number % 2 == 0:
+        more_uniques.add(number)
+        
+print(more_uniques)
+{2, 4}
+
+
+
+
+# ========== Itertools
+
+fin = open('itertolls.ipynb)
+
+for line in it.islice(fin, None, None, 3):
+	print(line.strip()) # could use lstrip/rstrip as well
+
+
+
+
+
+
+
+
